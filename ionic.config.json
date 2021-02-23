@@ -1,0 +1,7 @@
+{
+  "name": "demo-web-worker",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
