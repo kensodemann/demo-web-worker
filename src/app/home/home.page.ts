@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { EchoWebWorkerService } from '../echo-web-worker.service';
 
 @Component({
   selector: 'app-home',
@@ -6,7 +8,15 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  age: number;
+  name: string;
+  msg$: Observable<string>;
 
-  constructor() {}
+  constructor(private echo: EchoWebWorkerService) {
+    this.msg$ = this.echo.currentMessage;
+  }
 
+  ping() {
+    this.echo.ping(this.name, this.age);
+  }
 }
